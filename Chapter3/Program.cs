@@ -12,25 +12,16 @@ namespace Chapter3
     {
         static void Main(string[] args)
         {
-            var names = new List<string>
-            {
-                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
-            };
+            //問題3-1-1
+            var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            var query = names.Where(s => s.Length <= 5);
+            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
 
-            foreach (var s in query)
-            {
-                Console.WriteLine(s);
-            }
-
-            Console.WriteLine("--------------");
-
-            names[0] = "Osaka";
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
+            if (exists)
+                Console.WriteLine("存在しています。");
+            else
+                Console.WriteLine("存在していません。");
+        
         }
 
     }
