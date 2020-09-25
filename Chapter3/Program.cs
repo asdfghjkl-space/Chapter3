@@ -12,14 +12,25 @@ namespace Chapter3
     {
         static void Main(string[] args)
         {
-            var list = new List<string>
+            var names = new List<string>
             {
                 "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
             };
 
-            //list.ForEach(s => Console.WriteLine(s));
+            var query = names.Where(s => s.Length <= 5);
 
-            list.ConvertAll(s => s.ToUpper()).ForEach(s => Console.WriteLine(s));
+            foreach (var s in query)
+            {
+                Console.WriteLine(s);
+            }
+
+            Console.WriteLine("--------------");
+
+            names[0] = "Osaka";
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
         }
 
     }
