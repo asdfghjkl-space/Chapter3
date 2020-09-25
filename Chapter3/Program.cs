@@ -12,15 +12,18 @@ namespace Chapter3
     {
         static void Main(string[] args)
         {
-            //問題3-1-1
+            ////問題3-1-1
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+            //var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
 
-            if (exists)
-                Console.WriteLine("存在しています。");
-            else
-                Console.WriteLine("存在していません。");
+            //if (exists)
+            //    Console.WriteLine("存在しています。");
+            //else
+            //    Console.WriteLine("存在していません。");
+
+            //問題3-1-2
+            numbers.ForEach(s => Console.WriteLine(s /2.0 ));
         
         }
 
