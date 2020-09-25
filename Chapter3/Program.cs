@@ -23,8 +23,15 @@ namespace Chapter3
             //    Console.WriteLine("存在していません。");
 
             //問題3-1-2
-            numbers.ForEach(s => Console.WriteLine(s /2.0 ));
-        
+            //numbers.ForEach(s => Console.WriteLine(s /2.0 ));
+
+            //問題3-1-3
+            IEnumerable<int> query = numbers.Where(s => s >= 50);
+
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
         }
 
     }
