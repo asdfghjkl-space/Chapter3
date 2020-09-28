@@ -72,7 +72,7 @@ namespace Chapter3
             //Console.WriteLine(index);
 
             //問題3-2-3
-            //var index = names.Where(s => s.Contains('o')).ToList();
+            //var index = names.Where(s => s.Contains('o')).ToArray();
 
             //foreach (var item in index)
             //{
