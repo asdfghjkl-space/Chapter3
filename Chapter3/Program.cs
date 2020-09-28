@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -47,13 +48,24 @@ namespace Chapter3
                 "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hog kong",
             };
 
-            //問題3-2-1
+            //問題3 - 2 - 1
             //Console.WriteLine("都市名を入力してください。");
             //var line = Console.ReadLine();
-
             //var index = names.FindIndex(s => s == line);
-
             //Console.WriteLine(index);
+
+            //空白で終了の処理
+            Console.WriteLine("都市名を入力。空白で終了。");
+            do
+            {
+                var line = Console.ReadLine();
+                if (string.IsNullOrEmpty(line))
+                {
+                    break;
+                }
+                var index = names.FindIndex(s => s == line);
+                Console.WriteLine(index);
+            } while (true);
 
             //問題3-2-2
             //var index = names.Count(s => s.Contains('o'));
@@ -68,11 +80,11 @@ namespace Chapter3
             //}
 
             //問題3-2-4
-            var index = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
-            foreach (var item in index)
-            {
-                Console.WriteLine(item);
-            }
+            //var index = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
+            //foreach (var item in index)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
 
     }
