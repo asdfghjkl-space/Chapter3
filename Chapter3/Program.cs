@@ -60,8 +60,15 @@ namespace Chapter3
             //Console.WriteLine(index);
 
             //問題3-2-3
-            var index = names.Where(s => s.Contains('o')).ToList();
+            //var index = names.Where(s => s.Contains('o')).ToList();
 
+            //foreach (var item in index)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //問題3-2-4
+            var index = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
             foreach (var item in index)
             {
                 Console.WriteLine(item);
