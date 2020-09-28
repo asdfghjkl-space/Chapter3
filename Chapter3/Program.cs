@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,9 +27,16 @@ namespace Chapter3
             //numbers.ForEach(s => Console.WriteLine(s /2.0 ));
 
             //問題3-1-3
-            IEnumerable<int> query = numbers.Where(s => s >= 50);
+            //IEnumerable<int> query = numbers.Where(s => s >= 50);
 
-            foreach (var item in query)
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //問題3-1-4
+            List<int> lists = numbers.Select(s => s * 2).ToList();
+            foreach (var item in lists)
             {
                 Console.WriteLine(item);
             }
