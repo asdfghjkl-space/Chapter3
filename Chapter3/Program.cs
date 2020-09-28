@@ -14,7 +14,7 @@ namespace Chapter3
         static void Main(string[] args)
         {
             ////問題3-1-1
-            var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+            //var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
             //var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
 
@@ -35,11 +35,25 @@ namespace Chapter3
             //}
 
             //問題3-1-4
-            List<int> lists = numbers.Select(s => s * 2).ToList();
-            foreach (var item in lists)
+            //List<int> lists = numbers.Select(s => s * 2).ToList();
+            //foreach (var item in lists)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //問題3-2
+            var names = new List<string>
             {
-                Console.WriteLine(item);
-            }
+                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Canberra","Hog kong",
+            };
+
+            //問題3-2-1
+            Console.WriteLine("都市名を入力してください。");
+            var line = Console.ReadLine();
+
+            var index = names.FindIndex(s => s == line);
+
+            Console.WriteLine(index);
         }
 
     }
