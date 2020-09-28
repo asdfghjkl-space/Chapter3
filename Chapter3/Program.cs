@@ -48,11 +48,15 @@ namespace Chapter3
             };
 
             //問題3-2-1
-            Console.WriteLine("都市名を入力してください。");
-            var line = Console.ReadLine();
+            //Console.WriteLine("都市名を入力してください。");
+            //var line = Console.ReadLine();
 
-            var index = names.FindIndex(s => s == line);
+            //var index = names.FindIndex(s => s == line);
 
+            //Console.WriteLine(index);
+
+            //問題3-2-2
+            var index = names.Count(s => s.Contains('o'));
             Console.WriteLine(index);
         }
 
