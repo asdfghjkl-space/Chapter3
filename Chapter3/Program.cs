@@ -56,8 +56,16 @@ namespace Chapter3
             //Console.WriteLine(index);
 
             //問題3-2-2
-            var index = names.Count(s => s.Contains('o'));
-            Console.WriteLine(index);
+            //var index = names.Count(s => s.Contains('o'));
+            //Console.WriteLine(index);
+
+            //問題3-2-3
+            var index = names.Where(s => s.Contains('o')).ToList();
+
+            foreach (var item in index)
+            {
+                Console.WriteLine(item);
+            }
         }
 
     }
