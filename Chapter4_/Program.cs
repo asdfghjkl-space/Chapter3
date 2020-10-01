@@ -33,7 +33,9 @@ namespace Chapter4_
         //店舗名
         public string ShopName { get; set; }
         //売上高
-        public int Amount { get; set; }
-        public string Product {get;set;}
+        public int Amount { get; set; } = 100000;
+        public string Product { get => product; set => product = value; }
+
+        private string product;
     }
 }
