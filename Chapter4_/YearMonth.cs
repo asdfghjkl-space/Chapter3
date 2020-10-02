@@ -14,6 +14,7 @@ namespace Chapter4_
         //月
         public int Month { get; private set; }
 
+        //コンストラクタ
         public YearMonth(int year,int month)
         {
             Year = year;
