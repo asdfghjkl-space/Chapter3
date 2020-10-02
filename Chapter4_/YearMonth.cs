@@ -8,6 +8,7 @@ namespace Chapter4_
 {
     class YearMonth
     {
+        #region 演習問題4-1
         //4.1.1 プロパティ２つ、コンストラクタ
         //年
         public int Year { get; private set; }
@@ -15,7 +16,7 @@ namespace Chapter4_
         public int Month { get; private set; }
 
         //コンストラクタ
-        public YearMonth(int year,int month)
+        public YearMonth(int year, int month)
         {
             Year = year;
             Month = month;
@@ -42,5 +43,6 @@ namespace Chapter4_
         {
             return $"{Year}年{Month}月";
         }
+        #endregion
     }
 }
