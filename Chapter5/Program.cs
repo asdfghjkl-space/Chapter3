@@ -25,18 +25,27 @@ namespace Chapter5
             //}
 
             //5-2
-            var suuzi = Console.ReadLine();
+            //var suuzi = Console.ReadLine();
 
-            int num;    //変換後の数値格納
-            if(int.TryParse(suuzi, out num))
-            {
-                Console.WriteLine(num.ToString("#,#"));
-            }
-            else
-            {
-                Console.WriteLine("数値文字列ではありません。");
-            }
-            
+            //int num;    //変換後の数値格納
+            //if(int.TryParse(suuzi, out num))
+            //{
+            //    Console.WriteLine(num.ToString("#,#"));
+            //}
+            //else
+            //{
+            //    Console.WriteLine("数値文字列ではありません。");
+            //}
+
+            //5-3
+            var text = "Jackdaws love my big sphinx of quartz";
+            //5-3-1
+            //var count = text.Count(s => s == ' ');
+            //Console.WriteLine("空白の数:{0}",count);
+
+            //5-3-2
+            var moji = text.Replace("big", "small");
+            Console.WriteLine(moji);
         }
     }
 }
