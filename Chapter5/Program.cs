@@ -48,8 +48,17 @@ namespace Chapter5
             //Console.WriteLine(moji);
 
             //5-3-3
-            var count = text.Split(' ').Length;
-            Console.WriteLine(count);
+            //var count = text.Split(' ').Length;
+            //Console.WriteLine(count);
+
+            //5-3-4
+            var count = text.Split(' ').Where(s => s.Length <= 4);
+            foreach (var item in count)
+            {
+                Console.WriteLine(item);
+            }
+
+
         }
     }
 }
