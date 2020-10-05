@@ -52,12 +52,29 @@ namespace Chapter5
             //Console.WriteLine(count);
 
             //5-3-4
-            var count = text.Split(' ').Where(s => s.Length <= 4);
-            foreach (var item in count)
-            {
-                Console.WriteLine(item);
-            }
+            //var count = text.Split(' ').Where(s => s.Length <= 4);
+            //foreach (var item in count)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
+            //5-3-5
+            var words = text.Split(' ').ToArray();
+
+            if (words.Length > 0)
+            {
+                var sb = new StringBuilder(words[0]);
+
+                foreach (var item in words.Skip(1))
+                {
+                    sb.Append(' ');
+                    sb.Append(item);
+                }
+                var word = sb.ToString();
+
+                Console.WriteLine(word);
+
+            }
 
         }
     }
