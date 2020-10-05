@@ -44,8 +44,12 @@ namespace Chapter5
             //Console.WriteLine("空白の数:{0}",count);
 
             //5-3-2
-            var moji = text.Replace("big", "small");
-            Console.WriteLine(moji);
+            //var moji = text.Replace("big", "small");
+            //Console.WriteLine(moji);
+
+            //5-3-3
+            var count = text.Split(' ').Length;
+            Console.WriteLine(count);
         }
     }
 }
