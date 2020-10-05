@@ -38,7 +38,7 @@ namespace Chapter5
             //}
 
             //5-3
-            var text = "Jackdaws love my big sphinx of quartz";
+            //var text = "Jackdaws love my big sphinx of quartz";
             //5-3-1
             //var count = text.Count(s => s == ' ');
             //Console.WriteLine("空白の数:{0}",count);
@@ -59,23 +59,45 @@ namespace Chapter5
             //}
 
             //5-3-5
-            var words = text.Split(' ').ToArray();
+            //var words = text.Split(' ').ToArray();
 
-            if (words.Length > 0)
+            //if (words.Length > 0)
+            //{
+            //    var sb = new StringBuilder(words[0]);
+
+            //    foreach (var item in words.Skip(1))
+            //    {
+            //        sb.Append(' ');
+            //        sb.Append(item);
+            //    }
+            //    var word = sb.ToString();
+
+            //    Console.WriteLine(word);
+
+            //}
+
+            //5-4
+            var text = "Novelist=谷崎潤一郎;BestWork=春？？;Bon=1886";
+
+            foreach (var item in text.Split(';'))
             {
-                var sb = new StringBuilder(words[0]);
-
-                foreach (var item in words.Skip(1))
-                {
-                    sb.Append(' ');
-                    sb.Append(item);
-                }
-                var word = sb.ToString();
-
-                Console.WriteLine(word);
-
+                var word = item.Split('=');
+                Console.WriteLine("{0}:{1}",ToJapanese(word[0]), word[1]);
             }
-
+        }
+        static string ToJapanese(string key)
+        {
+            switch (key)
+            {
+                case "Novelist":
+                    return "作家";
+                case "BestWork":
+                    return "代表作";
+                case "Bon":
+                    return "誕生日";
+                default:
+                    return "     ";
+            }
         }
     }
 }
