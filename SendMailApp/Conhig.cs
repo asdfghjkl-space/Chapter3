@@ -58,13 +58,14 @@ namespace SendMailApp
         }
 
         //設定データ更新
-        public bool UpdateStatus(Conhig cf) //←仮引数(cf)
+        //public bool UpdateStatus(Conhig cf) //←仮引数(cf)
+        public bool UpdateStatus(string smtp, string mailAppress, string passWord, int port, bool ssl)
         {
-            this.Smtp = cf.Smtp;
-            this.MailAddress = cf.MailAddress;
-            this.PassWord = cf.PassWord;
-            this.Port = cf.Port;
-            this.Ssl = cf.Ssl;
+            this.Smtp = Smtp;
+            this.MailAddress = MailAddress;
+            this.PassWord = PassWord;
+            this.Port = Port;
+            this.Ssl = Ssl;
 
             return true;
         }

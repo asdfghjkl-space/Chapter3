@@ -38,12 +38,12 @@ namespace SendMailApp
         //適用(更新)
         private void btApply_Click(object sender, RoutedEventArgs e)
         {
-            //(Conhig.GetInstance()).UpdateStatus(
-            //    tbSmtp.Text,
-            //    tbUserName.Text,
-            //    tbPassWord.Password,
-            //    int.Parse(tbPort.Text),
-            //    cbSsl.IsChecked ?? false);//更新処理を呼び出す
+            (Conhig.GetInstance()).UpdateStatus(
+                tbSmtp.Text,
+                tbUserName.Text,
+                tbPassWord.Password,
+                int.Parse(tbPort.Text),
+                cbSsl.IsChecked ?? false);//更新処理を呼び出す
         }
     }
 }
