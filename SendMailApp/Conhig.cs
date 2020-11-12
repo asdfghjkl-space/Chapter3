@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SendMailApp
 {
@@ -61,13 +63,31 @@ namespace SendMailApp
         //public bool UpdateStatus(Conhig cf) //←仮引数(cf)
         public bool UpdateStatus(string smtp, string mailAppress, string passWord, int port, bool ssl)
         {
-            this.Smtp = Smtp;
-            this.MailAddress = MailAddress;
-            this.PassWord = PassWord;
-            this.Port = Port;
-            this.Ssl = Ssl;
+            this.Smtp = smtp;
+            this.MailAddress = mailAppress;
+            this.PassWord = passWord;
+            this.Port = port;
+            this.Ssl = ssl;
 
             return true;
+        }
+
+        public void Serialise()    //シリアル化 P305参照
+        {
+            using(var writer = XmlWriter.Create("config.xml"))
+            {
+                var serializer = new XmlSerializer(instance.GetType());
+                serializer.Serialize(writer, instance);
+            }
+        }
+
+        public void DeSerialise()   //逆シリアル化 P307参照
+        {
+            using (var reader = XmlReader.Create("config.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(Conhig));
+                instance = serializer.Deserialize(reader) as Conhig;
+            }
         }
     }
 }

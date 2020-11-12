@@ -45,5 +45,24 @@ namespace SendMailApp
                 int.Parse(tbPort.Text),
                 cbSsl.IsChecked ?? false);//更新処理を呼び出す
         }
+
+        //OKボタン
+        private void btOK_Click(object sender, RoutedEventArgs e)
+        {
+            btApply_Click(sender, e);       //更新処理を呼び出す
+            this.Close();
+        }
+
+        //Cancelボタン
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        //設定画面ロード時に一度だけ呼び出される
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
