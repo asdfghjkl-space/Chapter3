@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -127,6 +128,31 @@ namespace SendMailApp
                 MessageBox.Show(ex.Message);
                 throw;
             }
+        }
+
+        private void btTuika_Click(object sender, RoutedEventArgs e)
+        {
+            var fod = new OpenFileDialog();
+
+            fod.Multiselect = true;
+
+            if(fod.ShowDialog() == true)
+            {
+                foreach (var item in fod.FileNames)
+                {
+                    tbTemp.Items.Add(item);
+                }
+            }
+        }
+
+        private void tbBody_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void bysakuzyo_Click(object sender, RoutedEventArgs e)
+        {
+            tbTemp.Items.Clear();
         }
     }
 }
