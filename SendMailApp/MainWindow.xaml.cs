@@ -57,21 +57,26 @@ namespace SendMailApp
                     msg.CC.Add(tbCc.Text); //
                 }
 
-                if(tbBcc.Text !="")
+                if(tbBcc.Text != "")
                 {
                     msg.Bcc.Add(tbBcc.Text);
                 }
+
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
 
-
                 sc.Host = "smtp.gmail.com"; //SMTPサーバーの設定
-                sc.Port = 587; //PORTの設定
+                sc.Port = Conhig.GetInstance().Port; //PORTの設定
                 sc.EnableSsl = true;
                 sc.Credentials = new NetworkCredential("ojsinfosys01@gmail.com", "ojsInfosys2020");
 
                 //sc.Send(msg); //送信
                 sc.SendMailAsync(msg);
+
+                foreach (var item in tbTemp.Items)
+                {
+                    msg.Attachments.Add(new Attachment(item.ToString()));
+                }
             }
             catch (Exception ex)
             {

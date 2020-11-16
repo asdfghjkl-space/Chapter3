@@ -38,31 +38,72 @@ namespace SendMailApp
         //適用(更新)
         private void btApply_Click(object sender, RoutedEventArgs e)
         {
-            (Conhig.GetInstance()).UpdateStatus(
-                tbSmtp.Text,
-                tbUserName.Text,
-                tbPassWord.Password,
-                int.Parse(tbPort.Text),
-                cbSsl.IsChecked ?? false);//更新処理を呼び出す
+            if (tbSmtp.Text == "" || tbUserName.Text == "" || tbPassWord.Password == "" || tbPort.Text == "")
+            {
+                MessageBox.Show("警告");
+            }
+            else
+            {
+                //更新処理を呼び出す
+                (Conhig.GetInstance()).UpdateStatus(tbSmtp.Text, tbUserName.Text, tbPassWord.Password, int.Parse(tbPort.Text), cbSsl.IsChecked ?? false);
+            }
         }
 
         //OKボタン
         private void btOK_Click(object sender, RoutedEventArgs e)
         {
-            btApply_Click(sender, e);       //更新処理を呼び出す
-            this.Close();
+            if (tbPassWord.Password == "")
+            {
+                MessageBox.Show("パスワードを入力してください");
+            }
+            else if (int.Parse(tbPort.Text) == 0)
+            {
+                MessageBox.Show("ポート番号を入力してください");
+            }
+            else if (tbSmtp.Text == "")
+            {
+                MessageBox.Show("SMTPを入力してください");
+            }
+            else if (tbUserName.Text == "")
+            {
+                MessageBox.Show("メールアドレスを入力してください");
+            }
+            else
+            {
+                btApply_Click(sender, e);   //更新処理を呼び出す
+                this.Close();
+            }
         }
 
         //Cancelボタン
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (tbPassWord.Password != null || tbPort.Text != null
+                || tbSmtp.Text != null || tbUserName.Text != null)
+            {
+                MessageBoxResult result = MessageBox.Show("変更が反映されていません。", "", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    this.Close();
+
+                }
+                else if (result == MessageBoxResult.Cancel)
+                {
+
+                }
+            }
         }
 
         //設定画面ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            Conhig stf = (Conhig.GetInstance());
+            tbUserName.Text = stf.MailAddress;
+            tbPassWord.Password = stf.PassWord;
+            tbSmtp.Text = stf.Smtp;
+            cbSsl.IsChecked = stf.Ssl;
+            tbSender.Text = stf.MailAddress;
+            tbPort.Text = stf.Port.ToString();
         }
     }
 }

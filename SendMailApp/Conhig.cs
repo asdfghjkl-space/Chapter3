@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -74,20 +76,45 @@ namespace SendMailApp
 
         public void Serialise()    //シリアル化 P305参照
         {
-            using(var writer = XmlWriter.Create("config.xml"))
+            try
             {
-                var serializer = new XmlSerializer(instance.GetType());
-                serializer.Serialize(writer, instance);
+                XmlSerializer xs = new XmlSerializer(typeof(Conhig));
+                StreamWriter sw = new StreamWriter("Config.xml");
+                Conhig cf = Conhig.GetInstance();
+                xs.Serialize(sw, cf);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            //using (var writer = XmlWriter.Create("config.xml"))
+            //{
+            //    var serializer = new XmlSerializer(instance.GetType());
+            //    serializer.Serialize(writer, instance);
+            //}
         }
 
         public void DeSerialise()   //逆シリアル化 P307参照
         {
-            using (var reader = XmlReader.Create("config.xml"))
+            try
             {
-                var serializer = new XmlSerializer(typeof(Conhig));
-                instance = serializer.Deserialize(reader) as Conhig;
+                using (StreamReader sr = new StreamReader("Config.xml"))
+                {
+                    XmlSerializer xs = new XmlSerializer(typeof(Conhig));
+                    instance = xs.Deserialize(sr) as Conhig;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            //using (var reader = XmlReader.Create("config.xml"))
+            //{
+            //    var serializer = new XmlSerializer(typeof(Conhig));
+            //    instance = serializer.Deserialize(reader) as Conhig;
+            //}
         }
     }
 }
