@@ -64,8 +64,8 @@ namespace SendMailApp
                     msg.Bcc.Add(tbBcc.Text);
                 }
 
-                msg.Subject = tbTitle.Text; //件名
-                msg.Body = tbBody.Text; //本文
+                //msg.Subject = tbTitle.Text; //件名
+                //msg.Body = tbBody.Text; //本文
 
                 sc.Host = /*"smtp.gmail.com"*/ch.Smtp; //SMTPサーバーの設定
                 sc.Port = /*Conhig.GetInstance().Port*/ch.Port; //PORTの設定
