@@ -48,9 +48,11 @@ namespace SendMailApp
         //メール送信
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
-                MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
+                var ch = Conhig.GetInstance();
+                MailMessage msg = new MailMessage(/*"ojsinfosys01@gmail.com"*/ch.MailAddress, tbTo.Text,tbTitle.Text,tbBody.Text);
 
                 if(tbCc.Text != "")
                 {
@@ -65,10 +67,10 @@ namespace SendMailApp
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
 
-                sc.Host = "smtp.gmail.com"; //SMTPサーバーの設定
-                sc.Port = Conhig.GetInstance().Port; //PORTの設定
-                sc.EnableSsl = true;
-                sc.Credentials = new NetworkCredential("ojsinfosys01@gmail.com", "ojsInfosys2020");
+                sc.Host = /*"smtp.gmail.com"*/ch.Smtp; //SMTPサーバーの設定
+                sc.Port = /*Conhig.GetInstance().Port*/ch.Port; //PORTの設定
+                sc.EnableSsl = /*true*/ch.Ssl;
+                sc.Credentials = new NetworkCredential(/*"ojsinfosys01@gmail.com", "ojsInfosys2020"*/ch.MailAddress,ch.PassWord);
 
                 //sc.Send(msg); //送信
                 sc.SendMailAsync(msg);
